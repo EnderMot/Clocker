@@ -1,2 +1,2 @@
 # Clocker
-Clocker game for studies
+Clocker to przeglądarkowa gra typu kliker.
