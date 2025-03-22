@@ -1,0 +1,133 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+/* Main body/area for all elements of the wedsite*/
+body{
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 2fr 300px;
+    grid-template-rows: 35px 150px 1fr;
+    grid-template-areas: 
+    "navbar navbar"
+    "counterArea counterArea"
+    "clockArea upgradeArea";
+}
+
+/* Area for all navigation elements
+like upgrades show button settings etc*/
+nav{
+    top: 0;
+    position: sticky;
+    grid-area: navbar;
+    background-color: aqua;
+    padding: 0.5em;
+}
+
+/* Button to show upgrade area when 
+on screen with less than 800px width*/
+button.upgradeButton{
+    display: none;
+    float: right;
+}
+
+/* Area for all counters of gained time etc*/
+counterArea{
+    top: 35px;
+    position: sticky;
+    grid-area: counterArea;
+    background-color:bisque;
+    padding: 0.5em;
+}
+
+/* Area for all upgrades related stuff*/
+upgradeArea{
+    height: calc(100vh - 201px);
+    top: 185px;
+    position: sticky;
+    align-self: start;
+    grid-area: upgradeArea;
+    background-color: gray;
+    padding: 0.5em;
+}
+
+/* Are for clock that will be clicked*/
+clockArea{
+    grid-area: clockArea;
+    background-color: cadetblue;
+}
+
+
+/* Layout of time counters*/
+timeArea{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas:
+    "years hours"
+    "months minutes"
+    "days seconds";
+}
+years{
+    grid-area: years;
+}
+months{
+    grid-area: months;
+}
+days{
+    grid-area: days;
+}
+hours{
+    grid-area: hours;
+}
+minutes{
+    grid-area: minutes;
+}
+seconds{
+    grid-area: seconds;
+}
+
+
+/* When website has less than 800px width*/
+@media (max-width: 800px){
+    body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 35px 160px 1fr;
+    }
+
+    upgradeArea{
+        position: fixed;
+        width: 300px;
+        display: none;
+        height: calc(100vh - 211px);
+        top: 195px;
+    }
+    .show{
+        display: block;
+    }
+
+    button.upgradeButton{
+        display: initial;
+    }
+
+    timeArea{
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas:
+        "years"
+        "hours"
+        "months"
+        "minutes"
+        "days"
+        "seconds";
+    }
+}
+
+/* When website has more than 2000px width*/
+@media(min-width: 2000px){
+    body{
+        grid-template-columns: 2fr 600px;
+    }
+    upgradeArea{
+        width: 600px;
+    }
+}

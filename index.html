@@ -1,7 +1,45 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <!-- Title of the website -->
+    <title>Clocker</title>
+    <!-- Link to main style.css file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to main script.js file -->
+    <script type="text/javascript" src="script.js" defer></script>
+  </head>
   <body>
-    <h1>joł joł joł</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+
+    <!-- Area for all navigation elements like upgrades show button settings etc -->
+    <nav>Ustawienia i nawigacja
+      <!-- Button to show upgrade area when on screen with less than 800px width -->
+      <button class="upgradeButton" onclick="toggleUpgradeArea()">Show Upgrades</button>
+    </nav>
+    
+    <!-- Area for all counters of gained time etc -->
+    <counterArea>
+      Liczniki kliknięć
+      <h4>Time gained:</h4>
+      
+      <!-- Area for all time counters -->
+      <timeArea>
+        <years>Years: 0</years>
+        <months>Months: 0</months>
+        <days>Days: 0</days>
+        <hours>Hours: 0</hours>
+        <minutes>Minutes: 0</minutes>
+        <seconds>Seconds: 0</seconds>
+      </timeArea>
+    
+    </counterArea>
+    
+    <!-- Area for all upgrades related stuff -->
+    <upgradeArea id="upgradeArea">Ulepszenia</upgradeArea>
+    
+    <!-- Are for clock that will be clicked -->
+    <clockArea>
+      <h1>Zegar do klikania</h1>
+    </clockArea>
+  
   </body>
 </html>
