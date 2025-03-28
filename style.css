@@ -9,17 +9,17 @@ body{
     grid-template-columns: 2fr 300px;
     grid-template-rows: 35px 150px 1fr;
     grid-template-areas: 
-    "navbar navbar"
+    "navigationArea navigationArea"
     "counterArea counterArea"
     "clockArea upgradeArea";
 }
 
 /* Area for all navigation elements
 like upgrades show button settings etc*/
-nav{
+navigationArea{
     top: 0;
     position: sticky;
-    grid-area: navbar;
+    grid-area: navigationArea;
     background-color: aqua;
     padding: 0.5em;
 }
@@ -94,7 +94,7 @@ seconds{
 
 /*SITE SCALING SETTINGS*/
 /* When website has less than 800px width*/
-@media (max-width: 800px){
+@media only screen and (max-width: 800px){
     body{
         grid-template-columns: 1fr;
         grid-template-rows: 35px 160px 1fr;
@@ -128,8 +128,9 @@ seconds{
     }
 }
 
+
 /* When website has more than 2000px width*/
-@media(min-width: 2000px){
+@media only screen and (min-width: 2000px){
     body{
         grid-template-columns: 2fr 600px;
     }
