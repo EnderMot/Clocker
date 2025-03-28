@@ -51,12 +51,17 @@ upgradeArea{
     padding: 0.5em;
 }
 
-/* Are for clock that will be clicked*/
+/* Area for clock that will be clicked*/
 clockArea{
     grid-area: clockArea;
     background-color: cadetblue;
 }
 
+/* Clickable clock button */
+img.clockImg{
+    pointer-events: none;
+    user-select: none;
+}
 
 /* Layout of time counters*/
 timeArea{
@@ -87,6 +92,7 @@ seconds{
 }
 
 
+/*SITE SCALING SETTINGS*/
 /* When website has less than 800px width*/
 @media only screen and (max-width: 800px){
     body{
