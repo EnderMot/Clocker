@@ -13,7 +13,7 @@
     <!-- Area for all navigation elements like upgrades show button settings etc -->
     <nav>Ustawienia i nawigacja
       <!-- Button to show upgrade area when on screen with less than 800px width -->
-      <button class="upgradeButton" onclick="toggleUpgradeArea()">Show Upgrades</button>
+      <button class="upgradeButton" type="button" onclick="toggleUpgradeArea()">Show Upgrades</button>
     </nav>
     
     <!-- Area for all counters of gained time etc -->
@@ -27,8 +27,8 @@
         <months>Months: 0</months>
         <days>Days: 0</days>
         <hours>Hours: 0</hours>
-        <minutes>Minutes: 0</minutes>
-        <seconds>Seconds: 0</seconds>
+        <minutes>Minutes: <minutesAmount id="minutesAmount">0</minutesAmount></minutes>
+        <seconds>Seconds: <secoundsAmount id="secondsAmount">0</secoundsAmount></seconds>
       </timeArea>
     
     </counterArea>
@@ -37,8 +37,8 @@
     <upgradeArea id="upgradeArea">Ulepszenia</upgradeArea>
     
     <!-- Are for clock that will be clicked -->
-    <clockArea>
-      <h1>Zegar do klikania</h1>
+    <clockArea class="container" onclick="addSecond()">
+      <img src="graphics/clockGraphics/clockTmp.png" class="clockImg">
     </clockArea>
   
   </body>
