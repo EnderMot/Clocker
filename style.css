@@ -53,14 +53,20 @@ upgradeArea{
 
 /* Area for clock that will be clicked*/
 clockArea{
+    user-select: none;
     grid-area: clockArea;
     background-color: cadetblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Clickable clock button */
 img.clockImg{
     pointer-events: none;
     user-select: none;
+    width: 60%;
+    height: auto;
 }
 
 /* Layout of time counters*/
@@ -136,5 +142,12 @@ seconds{
     }
     upgradeArea{
         width: 600px;
+        height: calc(100vh - 216px);
+    }
+    img.clockImg{
+        pointer-events: none;
+        user-select: none;
+        width: 30%;
+        height: auto;
     }
 }

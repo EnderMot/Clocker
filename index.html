@@ -25,10 +25,10 @@
       
       <!-- Area for all time counters -->
       <timeArea>
-        <years>Years: 0</years>
-        <months>Months: 0</months>
-        <days>Days: 0</days>
-        <hours>Hours: 0</hours>
+        <years>Years: <yearsAmount id="yearsAmount">0</yearsAmount></years>
+        <months>Months: <monthsAmount id="monthsAmount">0</monthsAmount></months>
+        <days>Days: <daysAmount id="daysAmount">0</daysAmount></days>
+        <hours>Hours: <hoursAmount id="hoursAmount">0</hoursAmount></hours>
         <minutes>Minutes: <minutesAmount id="minutesAmount">0</minutesAmount></minutes>
         <seconds>Seconds: <secoundsAmount id="secondsAmount">0</secoundsAmount></seconds>
       </timeArea>
@@ -39,8 +39,8 @@
     <upgradeArea id="upgradeArea">Ulepszenia</upgradeArea>
     
     <!-- Are for clock that will be clicked -->
-    <clockArea class="container" onclick="addSecond()">
-      <img src="graphics/clockGraphics/clockTmp.png" class="clockImg">
+    <clockArea class="container" onclick="clickClock()">
+      <img src="graphics/clockGraphics/clockTmp.png" class="clockImg" id="clockImg">
     </clockArea>
   
   </body>
