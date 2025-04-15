@@ -1,7 +1,47 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Title of the website -->
+    <title>Clocker</title>
+    <!-- Link to main style.css file -->
+    <link rel="stylesheet" href="style.css">
+    <!-- Link to main script.js file -->
+    <script type="text/javascript" src="script.js" defer></script>
+  </head>
   <body>
-    <h1>joł joł joł</h1>
-    <p>I'm hosted with GitHub Pages.</p>
+
+    <!-- Area for all navigation elements like upgrades show button settings etc -->
+    <navigationArea>Ustawienia i nawigacja
+      <!-- Button to show upgrade area when on screen with less than 800px width -->
+      <button class="upgradeButton" onclick="toggleUpgradeArea()">Show Upgrades</button>
+    </navigationArea>
+    
+    <!-- Area for all counters of gained time etc -->
+    <counterArea>
+      Liczniki kliknięć
+      <h4>Time gained:</h4>
+      
+      <!-- Area for all time counters -->
+      <timeArea>
+        <years>Years: <yearsAmount id="yearsAmount">0</yearsAmount></years>
+        <months>Months: <monthsAmount id="monthsAmount">0</monthsAmount></months>
+        <days>Days: <daysAmount id="daysAmount">0</daysAmount></days>
+        <hours>Hours: <hoursAmount id="hoursAmount">0</hoursAmount></hours>
+        <minutes>Minutes: <minutesAmount id="minutesAmount">0</minutesAmount></minutes>
+        <seconds>Seconds: <secoundsAmount id="secondsAmount">0</secoundsAmount></seconds>
+      </timeArea>
+    
+    </counterArea>
+    
+    <!-- Area for all upgrades related stuff -->
+    <upgradeArea id="upgradeArea">Ulepszenia</upgradeArea>
+    
+    <!-- Are for clock that will be clicked -->
+    <clockArea class="container" onclick="clickClock()">
+      <img src="graphics/clockGraphics/clockTmp.png" class="clockImg" id="clockImg">
+    </clockArea>
+  
   </body>
 </html>
