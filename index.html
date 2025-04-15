@@ -13,7 +13,19 @@
   <body>
 
     <!-- Area for all navigation elements like upgrades show button settings etc -->
-    <navigationArea>Ustawienia i nawigacja
+    <navigationArea>
+ <!--Nakładka ustawienia-->
+ <button onclick="openSettings()">Ustawienia</button>
+
+ <div id="settingsPanel" class="hidden">
+   <div class="overlay" onclick="closeSettings()"></div>
+   <div class="settings-box">
+     <h2>Ustawienia</h2>
+     <p>Zmiana ustawień.</p>
+     <button onclick="closeSettings()">Zamknij</button>
+   </div>
+ </div>
+
       <!-- Button to show upgrade area when on screen with less than 800px width -->
       <button class="upgradeButton" onclick="toggleUpgradeArea()">Show Upgrades</button>
     </navigationArea>
@@ -42,6 +54,6 @@
     <clockArea class="container" onclick="clickClock()">
       <img src="graphics/clockGraphics/clockTmp.png" class="clockImg" id="clockImg">
     </clockArea>
-  
+
   </body>
 </html>
