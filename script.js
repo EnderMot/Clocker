@@ -73,3 +73,14 @@ function openSettings() {
   function closeSettings() {
     document.getElementById('settingsPanel').classList.add('hidden');
   }
+
+
+  function activateUpgrade(element) {
+    if (element.classList.contains("used")) return;
+  
+    console.log("Ulepszenie aktywowane!");
+    element.classList.add("used");
+  
+    // tutaj możesz dodać efekt w grze, np. mnożnik kliknięć
+  }
+  

@@ -16,13 +16,13 @@ body{
 
 /* Area for all navigation elements
 like upgrades show button settings etc*/
-navigationArea{
+navigationArea {
     top: 0;
     position: sticky;
     grid-area: navigationArea;
-    background-color: aqua;
+    background-color: #ffb6c1; /* pastelowy róż */
     padding: 0.5em;
-}
+  }
 
 /* Button to show upgrade area when 
 on screen with less than 800px width*/
@@ -32,34 +32,39 @@ button.upgradeButton{
 }
 
 /* Area for all counters of gained time etc*/
-counterArea{
+counterArea {
     top: 35px;
     position: sticky;
     grid-area: counterArea;
-    background-color:bisque;
+    background-color: #ffe4e1; /* pudrowy róż */
     padding: 0.5em;
-}
+    color: #800040; /* ciemna malina dla kontrastu */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
 
 /* Area for all upgrades related stuff*/
-upgradeArea{
+upgradeArea {
     height: calc(100vh - 201px);
     top: 185px;
     position: sticky;
     align-self: start;
     grid-area: upgradeArea;
-    background-color: gray;
+    background-color: #f8c8dc; /* jasny różowo-brzoskwiniowy */
     padding: 0.5em;
-}
+  }
+  
 
 /* Area for clock that will be clicked*/
-clockArea{
+clockArea {
     user-select: none;
     grid-area: clockArea;
-    background-color: cadetblue;
+    background-color: #ffcce0; /* bardzo jasny róż */
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
+  
 
 /* Clickable clock button */
 img.clockImg{
@@ -176,12 +181,60 @@ seconds{
 }
 
 .settings-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 10000;
-}
+    background-color: #fff0f5; /* lawendowy róż */
+    color: #800040;
+    border: 2px solid #ffb6c1;
+  }
+  
+
+  .upgrade {
+    background-color: #ffb6c1; /* jasny róż */
+    color: #800040; /* ciemna malina */
+    border: 2px solid #ff69b4; /* intensywniejszy róż */
+    padding: 12px 20px;
+    margin: 10px;
+    border-radius: 20px;
+    text-align: center;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    box-shadow: 0 4px 8px rgba(255, 105, 180, 0.3);
+    cursor: pointer;
+    transition: all 0.3s ease;
+  }
+  
+  .upgrade:hover {
+    background-color: #ffc0cb; /* pastelowy róż przy hoverze */
+    box-shadow: 0 6px 12px rgba(255, 105, 180, 0.4);
+  }
+  
+  .upgrade.used {
+    background-color: #f3d6da; /* przygaszony róż */
+    border-color: #d8bfd8;
+    color: #888;
+    opacity: 0.6;
+    box-shadow: none;
+    cursor: default;
+    pointer-events: none;
+  }
+  
+  .sweet-button {
+    background-color: #ffb6c1;
+    border: 1.5px solid #ff69b4;
+    color: #800040;
+    padding: 4px 10px;              /* JESZCZE MNIEJSZE */
+    border-radius: 12px;
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 0.75rem;             /* MNIEJSZA CZCIONKA */
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(255, 105, 180, 0.15);
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+  
+  .sweet-button:hover {
+    background-color: #ffc0cb;
+    box-shadow: 0 3px 6px rgba(255, 105, 180, 0.25);
+    transform: scale(1.05);
+  }
+  
