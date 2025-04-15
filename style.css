@@ -185,3 +185,25 @@ seconds{
   border-radius: 8px;
   z-index: 10000;
 }
+
+/* Ulepszenia */
+.upgrade {
+    background-color: lightgreen;
+    padding: 10px;
+    margin: 10px 0;
+    border: 2px solid darkgreen;
+    border-radius: 8px;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.3s ease, opacity 0.3s ease;
+  }
+  
+  .upgrade.used {
+    background-color: gray;
+    border-color: darkgray;
+    color: white;
+    cursor: default;
+    opacity: 0.6;
+    pointer-events: none;
+  }
+  
