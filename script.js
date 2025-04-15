@@ -64,3 +64,12 @@ function updateSeconds(seconds){
     secondsAmount.innerHTML = seconds+"";
 }
 
+// Nakładka ustawienia
+
+function openSettings() {
+    document.getElementById('settingsPanel').classList.remove('hidden');
+  }
+  
+  function closeSettings() {
+    document.getElementById('settingsPanel').classList.add('hidden');
+  }
