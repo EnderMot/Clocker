@@ -9,9 +9,13 @@
     <link rel="stylesheet" href="style.css">
     <!-- Link to main script.js file -->
     <script type="text/javascript" src="script.js" defer></script>
+    <!-- Sounds -->
+    <audio autoplay loop src= "Sounds/backgroundClockSound.mp3" id="backgroundMusic"></audio>
+    <audio src="Sounds/clickClockSound.mp3" id="soundEffect"></audio>
   </head>
   <body>
-
+    
+  
     <!-- Area for all navigation elements like upgrades show button settings etc -->
     <navigationArea>
  <!--Nakładka ustawienia-->
@@ -23,7 +27,22 @@
      <h2>Ustawienia</h2>
      <p>Zmiana ustawień.</p>
      <button onclick="closeSettings()">Zamknij</button>
+    
+     <!-- Background music slider -->
+     <div class="slider-container">
+      <label for="musicVolumeSlider">Music volume:</label>
+      <input type="range" id="musicVolumeSlider" min="0" max="100" value="100" oninput="showMusicVolume(this.value)">
+      <label id="musicVolumeValue">100%</label>
+    </div>
+
+    <!-- Effect slider -->
+    <div class="slider-container">
+      <label for="effectVolumeSlider">Effects volume:</label>
+      <input type="range" id="effectVolumeSlider" min="0" max="100" value="100" oninput="showEffectVolume(this.value)">
+      <label id="effectVolumeValue">100%</label>
+    </div>
    </div>
+   
  </div>
 
       <!-- Button to show upgrade area when on screen with less than 800px width -->

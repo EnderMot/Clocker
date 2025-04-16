@@ -16,6 +16,9 @@ function clickClock(){
     clickAmount++;
     updateCounters();
     updateClockGraphic();
+
+    soundEffect.currentTime = 0;
+    soundEffect.play();
 }
 
 function updateClockGraphic(){
@@ -66,10 +69,34 @@ function updateSeconds(seconds){
 
 // Nakładka ustawienia
 
+const sliderMusic = document.getElementById('musicVolumeSlider');
+const sliderMusicValue = document.getElementById('musicVolumeValue');
+
+const sliderEffects = document.getElementById('effectVolumeSlider');
+const sliderEffectValue = document.getElementById('effectVolumeValue');
+
+const backgroundMusic = document.getElementById('backgroundMusic');
+const soundEffect = document.getElementById('soundEffect');
+
+document.addEventListener('click', function(){
+    backgroundMusic.play();
+    soundEffect.play();
+}, { once: true });
+
 function openSettings() {
     document.getElementById('settingsPanel').classList.remove('hidden');
   }
   
+  function showMusicVolume(value) {
+      sliderMusicValue.innerHTML = value + '%';
+      backgroundMusic.volume = value / 100;
+  }
+  
+  function showEffectVolume(value) {
+      sliderEffectValue.innerHTML = value + '%';
+      soundEffect.volume = value / 100;
+  }
+
   function closeSettings() {
     document.getElementById('settingsPanel').classList.add('hidden');
   }
