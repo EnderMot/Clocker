@@ -75,12 +75,5 @@ function openSettings() {
   }
 
 
-  function activateUpgrade(element) {
-    if (element.classList.contains("used")) return;
-  
-    console.log("Ulepszenie aktywowane!");
-    element.classList.add("used");
-  
-    // tutaj możesz dodać efekt w grze, np. mnożnik kliknięć
   }
   
