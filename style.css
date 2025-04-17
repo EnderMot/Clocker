@@ -16,13 +16,13 @@ body{
 
 /* Area for all navigation elements
 like upgrades show button settings etc*/
-navigationArea{
+navigationArea {
     top: 0;
     position: sticky;
     grid-area: navigationArea;
-    background-color: aqua;
+    background-color: #ffb6c1; /* pastelowy róż */
     padding: 0.5em;
-}
+  }
 
 /* Button to show upgrade area when 
 on screen with less than 800px width*/
@@ -32,34 +32,39 @@ button.upgradeButton{
 }
 
 /* Area for all counters of gained time etc*/
-counterArea{
+counterArea {
     top: 35px;
     position: sticky;
     grid-area: counterArea;
-    background-color:bisque;
+    background-color: #ffe4e1; /* pudrowy róż */
     padding: 0.5em;
-}
+    color: #800040; /* ciemna malina dla kontrastu */
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+  }
+  
 
 /* Area for all upgrades related stuff*/
-upgradeArea{
+upgradeArea {
     height: calc(100vh - 201px);
     top: 185px;
     position: sticky;
     align-self: start;
     grid-area: upgradeArea;
-    background-color: gray;
+    background-color: #f8c8dc; /* jasny różowo-brzoskwiniowy */
     padding: 0.5em;
-}
+  }
+  
 
 /* Area for clock that will be clicked*/
-clockArea{
+clockArea {
     user-select: none;
     grid-area: clockArea;
-    background-color: cadetblue;
+    background-color: #ffcce0; /* bardzo jasny róż */
     display: flex;
     justify-content: center;
     align-items: center;
-}
+  }
+  
 
 /* Clickable clock button */
 img.clockImg{
@@ -176,34 +181,5 @@ seconds{
 }
 
 .settings-box {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background: white;
-  padding: 20px;
-  border-radius: 8px;
-  z-index: 10000;
-}
 
-/* Ulepszenia */
-.upgrade {
-    background-color: lightgreen;
-    padding: 10px;
-    margin: 10px 0;
-    border: 2px solid darkgreen;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.3s ease, opacity 0.3s ease;
-  }
-  
-  .upgrade.used {
-    background-color: gray;
-    border-color: darkgray;
-    color: white;
-    cursor: default;
-    opacity: 0.6;
-    pointer-events: none;
-  }
   

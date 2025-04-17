@@ -74,15 +74,6 @@ function openSettings() {
     document.getElementById('settingsPanel').classList.add('hidden');
   }
 
-// Ulepszenia
-function activateUpgrade(element) {
 
-    if (element.classList.contains("used")) return;
-  
-    console.log("Ulepszenie aktywowane!");
-  
-    element.classList.add("used");
-  
-    // Tu możesz dodać dowolną logikę np. zwiększenie mnożnika itd.
   }
   
