@@ -1,163 +1,139 @@
-*{
-    margin: 0;
-    padding: 0;
+* {
+  margin: 0;
+  padding: 0;
 }
-/* Main body/area for all elements of the wedsite*/
-body{
-    min-height: 100vh;
-    display: grid;
-    grid-template-columns: 2fr 300px;
-    grid-template-rows: 35px 150px 1fr;
-    grid-template-areas: 
+
+body {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 2fr 300px;
+  grid-template-rows: 35px 150px 1fr;
+  grid-template-areas:
     "navigationArea navigationArea"
     "counterArea counterArea"
     "clockArea upgradeArea";
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f4f1ee;
 }
 
-/* Area for all navigation elements
-like upgrades show button settings etc*/
+/* Nawigacja */
 navigationArea {
-    top: 0;
-    position: sticky;
-    grid-area: navigationArea;
-    background-color: #ffb6c1; /* pastelowy róż */
-    padding: 0.5em;
-  }
-
-/* Button to show upgrade area when 
-on screen with less than 800px width*/
-button.upgradeButton{
-    display: none;
-    float: right;
+  top: 0;
+  position: sticky;
+  grid-area: navigationArea;
+  background-color: #dcd2c0; /* naturalny beż */
+  padding: 0.5em;
 }
 
-/* Area for all counters of gained time etc*/
+/* Przycisk pokazujący ulepszenia */
+button.upgradeButton {
+  display: none;
+  float: right;
+}
+
+/* Liczniki */
 counterArea {
-    top: 35px;
-    position: sticky;
-    grid-area: counterArea;
-    background-color: #ffe4e1; /* pudrowy róż */
-    padding: 0.5em;
-    color: #800040; /* ciemna malina dla kontrastu */
-    font-family: 'Comic Sans MS', cursive, sans-serif;
-  }
-  
-
-/* Area for all upgrades related stuff*/
-upgradeArea {
-    height: calc(100vh - 201px);
-    top: 185px;
-    position: sticky;
-    align-self: start;
-    grid-area: upgradeArea;
-    background-color: #f8c8dc; /* jasny różowo-brzoskwiniowy */
-    padding: 0.5em;
-  }
-  
-
-/* Area for clock that will be clicked*/
-clockArea {
-    user-select: none;
-    grid-area: clockArea;
-    background-color: #ffcce0; /* bardzo jasny róż */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  
-
-/* Clickable clock button */
-img.clockImg{
-    pointer-events: none;
-    user-select: none;
-    width: 60%;
-    height: auto;
+  top: 35px;
+  position: sticky;
+  grid-area: counterArea;
+  background-color: #e6dfd3; /* stonowany jasny beż */
+  padding: 0.5em;
+  color: #333;
 }
 
-/* Layout of time counters*/
-timeArea{
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-areas:
+/* Ulepszenia */
+#upgradeArea {
+  height: calc(100vh - 201px);
+  top: 185px;
+  position: sticky;
+  align-self: start;
+  grid-area: upgradeArea;
+  background-color: #cbc5b9;
+  padding: 0.5em;
+}
+
+/* Obszar zegara */
+clockArea {
+  user-select: none;
+  grid-area: clockArea;
+  background-color: #ddd8cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img.clockImg {
+  pointer-events: none;
+  user-select: none;
+  width: 60%;
+  height: auto;
+}
+
+/* Liczniki w siatce */
+timeArea {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
     "years hours"
     "months minutes"
     "days seconds";
 }
-years{
-    grid-area: years;
-}
-months{
-    grid-area: months;
-}
-days{
-    grid-area: days;
-}
-hours{
-    grid-area: hours;
-}
-minutes{
-    grid-area: minutes;
-}
-seconds{
-    grid-area: seconds;
-}
+years { grid-area: years; }
+months { grid-area: months; }
+days { grid-area: days; }
+hours { grid-area: hours; }
+minutes { grid-area: minutes; }
+seconds { grid-area: seconds; }
 
+/* Skalowanie */
+@media only screen and (max-width: 800px) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: 35px 160px 1fr;
+  }
 
-/*SITE SCALING SETTINGS*/
-/* When website has less than 800px width*/
-@media only screen and (max-width: 800px){
-    body{
-        grid-template-columns: 1fr;
-        grid-template-rows: 35px 160px 1fr;
-    }
+  #upgradeArea {
+    position: fixed;
+    width: 300px;
+    display: none;
+    height: calc(100vh - 211px);
+    top: 195px;
+  }
 
-    upgradeArea{
-        position: fixed;
-        width: 300px;
-        display: none;
-        height: calc(100vh - 211px);
-        top: 195px;
-    }
-    .show{
-        display: block;
-    }
+  .show {
+    display: block;
+  }
 
-    button.upgradeButton{
-        display: initial;
-    }
+  button.upgradeButton {
+    display: initial;
+  }
 
-    timeArea{
-        display: grid;
-        grid-template-columns: 1fr;
-        grid-template-areas:
-        "years"
-        "months"
-        "days"
-        "hours"
-        "minutes"
-        "seconds";
-    }
+  timeArea {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "years"
+      "months"
+      "days"
+      "hours"
+      "minutes"
+      "seconds";
+  }
 }
 
-
-/* When website has more than 2000px width*/
-@media only screen and (min-width: 2000px){
-    body{
-        grid-template-columns: 2fr 600px;
-    }
-    upgradeArea{
-        width: 600px;
-        height: calc(100vh - 216px);
-    }
-    img.clockImg{
-        pointer-events: none;
-        user-select: none;
-        width: 30%;
-        height: auto;
-    }
+@media only screen and (min-width: 2000px) {
+  body {
+    grid-template-columns: 2fr 600px;
+  }
+  #upgradeArea {
+    width: 600px;
+    height: calc(100vh - 216px);
+  }
+  img.clockImg {
+    width: 30%;
+  }
 }
 
-/*Nakładka ustawienia */
+/* Nakładka ustawień */
 .hidden {
   display: none;
 }
@@ -168,7 +144,7 @@ seconds{
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 9999; /* na wierzchu */
+  z-index: 9999;
 }
 
 .overlay {
@@ -181,5 +157,170 @@ seconds{
 }
 
 .settings-box {
+  position: relative;
+  margin: 10% auto;
+  padding: 2em;
+  width: 300px;
+  background-color: #fefefe;
+  border-radius: 8px;
+  box-shadow: 0 0 10px #333;
+}
 
-  
+.slider-container {
+  margin-top: 1em;
+}
+
+/* Styl przycisków ulepszeń */
+#upgradeArea h2 {
+  margin-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+}
+
+button.upgrade {
+  display: block;
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #b6a89a;
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button.upgrade:disabled {
+  background-color: #aaa;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+/* Styl truskawkowego motywu */
+/* Styl truskawkowego motywu */
+body.strawberry {
+  background-color: #ffcfe1;
+}
+
+navigationArea.strawberry {
+  background-color: #fda4b8; /* intensywniejszy róż */
+  color: #4b0000;
+}
+
+counterArea.strawberry {
+  background-color: #ffd5e0; /* jasny róż */
+  color: #4b0000;
+}
+
+#upgradeArea.strawberry {
+  background-color: #fcb1c0; /* ciepły łososiowy */
+  color: #4b0000;
+}
+
+clockArea.strawberry {
+  background-color: #ffe3ec; /* najjaśniejszy róż */
+  border-left: 5px solid #e38a9e;
+  border-right: 5px solid #e38a9e;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* Animacja truskawki */
+.strawberry-fly {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  animation: fly 1.5s linear forwards;
+  z-index: 9999;
+}
+
+@keyframes fly {
+  0% {
+    transform: translateY(0px) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-200px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* Motyw borówkowy */
+body.blueberry {
+  background-color: #e6e6fa;
+}
+
+navigationArea.blueberry {
+  background-color: #a8a8d8;
+  color: #1b0033;
+}
+
+counterArea.blueberry {
+  background-color: #dcdcf2;
+  color: #1b0033;
+}
+
+#upgradeArea.blueberry {
+  background-color: #b3b3e6;
+  color: #1b0033;
+}
+
+clockArea.blueberry {
+  background-color: #f0f0ff;
+  border-left: 5px solid #8888cc;
+  border-right: 5px solid #8888cc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Borówkowa animacja */
+.blueberry-fly {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  pointer-events: none;
+  animation: fly 1.5s linear forwards;
+  z-index: 9999;
+}
+
+/* Motyw pomarańczowy */
+body.orange {
+  background-color: #fff3e0;
+}
+
+navigationArea.orange {
+  background-color: #ffb347;
+  color: #4b2600;
+}
+
+counterArea.orange {
+  background-color: #ffe0b2;
+  color: #4b2600;
+}
+
+#upgradeArea.orange {
+  background-color: #ffcc80;
+  color: #4b2600;
+}
+
+clockArea.orange {
+  background-color: #fff0d9;
+  border-left: 5px solid #ffa726;
+  border-right: 5px solid #ffa726;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Emotki pomarańczy */
+.orange-fly {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  pointer-events: none;
+  animation: fly 1.5s linear forwards;
+  z-index: 9999;
+}

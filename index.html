@@ -1,79 +1,66 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- Title of the website -->
-    <title>Clocker</title>
-    <!-- Link to main style.css file -->
-    <link rel="stylesheet" href="style.css">
-    <!-- Link to main script.js file -->
-    <script type="text/javascript" src="script.js" defer></script>
-    <!-- Sounds -->
-    <audio autoplay loop src= "Sounds/backgroundClockSound.mp3" id="backgroundMusic"></audio>
-    <audio src="Sounds/clickClockSound.mp3" id="soundEffect"></audio>
-  </head>
-  <body>
-    
-  
-    <!-- Area for all navigation elements like upgrades show button settings etc -->
-    <navigationArea>
- <!--Nakładka ustawienia-->
- <button class="sweet-button" onclick="openSettings()">Ustawienia</button>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clocker</title>
+  <link rel="stylesheet" href="style.css">
+  <script type="text/javascript" src="script.js" defer></script>
+  <audio src="Sounds/clickClockSound.mp3" id="soundEffect"></audio>
+</head>
+<body>
 
- <div id="settingsPanel" class="hidden">
-   <div class="overlay" onclick="closeSettings()"></div>
-   <div class="settings-box">
-     <h2>Ustawienia</h2>
-     <p>Zmiana ustawień.</p>
-     <button onclick="closeSettings()">Zamknij</button>
-    
-     <!-- Background music slider -->
-     <div class="slider-container">
-      <label for="musicVolumeSlider">Music volume:</label>
-      <input type="range" id="musicVolumeSlider" min="0" max="100" value="100" oninput="showMusicVolume(this.value)">
-      <label id="musicVolumeValue">100%</label>
+  <!-- Nawigacja -->
+  <navigationArea>
+    <button class="sweet-button" onclick="openSettings()">Ustawienia</button>
+
+    <!-- Panel ustawień -->
+    <div id="settingsPanel" class="hidden">
+      <div class="overlay" onclick="closeSettings()"></div>
+      <div class="settings-box">
+        <h2>Ustawienia</h2>
+        <p>Zmiana ustawień.</p>
+        <button onclick="closeSettings()">Zamknij</button>
+
+        <!-- Suwak efektów -->
+        <div class="slider-container">
+          <label for="effectVolumeSlider">Effects volume:</label>
+          <input type="range" id="effectVolumeSlider" min="0" max="100" value="100" oninput="showEffectVolume(this.value)">
+          <label id="effectVolumeValue">100%</label>
+        </div>
+      </div>
     </div>
 
-    <!-- Effect slider -->
-    <div class="slider-container">
-      <label for="effectVolumeSlider">Effects volume:</label>
-      <input type="range" id="effectVolumeSlider" min="0" max="100" value="100" oninput="showEffectVolume(this.value)">
-      <label id="effectVolumeValue">100%</label>
-    </div>
-   </div>
-   
- </div>
+    <button class="upgradeButton" onclick="toggleUpgradeArea()">Show Upgrades</button>
+  </navigationArea>
 
-      <!-- Button to show upgrade area when on screen with less than 800px width -->
-      <button class="upgradeButton" onclick="toggleUpgradeArea()">Show Upgrades</button>
-    </navigationArea>
-    
-    <!-- Area for all counters of gained time etc -->
-    <counterArea>
-      Liczniki kliknięć
-      <h4>Time gained:</h4>
-      
-      <!-- Area for all time counters -->
-      <timeArea>
-        <years>Years: <yearsAmount id="yearsAmount">0</yearsAmount></years>
-        <months>Months: <monthsAmount id="monthsAmount">0</monthsAmount></months>
-        <days>Days: <daysAmount id="daysAmount">0</daysAmount></days>
-        <hours>Hours: <hoursAmount id="hoursAmount">0</hoursAmount></hours>
-        <minutes>Minutes: <minutesAmount id="minutesAmount">0</minutesAmount></minutes>
-        <seconds>Seconds: <secoundsAmount id="secondsAmount">0</secoundsAmount></seconds>
-      </timeArea>
-    
-    </counterArea>
-    
-    <!-- Area for all upgrades related stuff -->
+  <!-- Liczniki -->
+  <counterArea>
+    Liczniki kliknięć
+    <h4>Time gained:</h4>
+    <timeArea>
+      <years>Years: <yearsAmount id="yearsAmount">0</yearsAmount></years>
+      <months>Months: <monthsAmount id="monthsAmount">0</monthsAmount></months>
+      <days>Days: <daysAmount id="daysAmount">0</daysAmount></days>
+      <hours>Hours: <hoursAmount id="hoursAmount">0</hoursAmount></hours>
+      <minutes>Minutes: <minutesAmount id="minutesAmount">0</minutesAmount></minutes>
+      <seconds>Seconds: <secoundsAmount id="secondsAmount">0</secoundsAmount></seconds>
+    </timeArea>
+  </counterArea>
 
-    </upgradeArea>
-    
-    <!-- Are for clock that will be clicked -->
-    <clockArea class="container" onclick="clickClock()">
-      <img src="graphics/clockGraphics/clockTmp.png" class="clockImg" id="clockImg">
-    </clockArea>
+  <!-- Ulepszenia -->
+  <div id="upgradeArea">
+  <h2>Ulepszenia</h2>
+  <button id="themeUpgrade" class="upgrade" onclick="applyTheme('strawberry')" disabled>🍓 Tryb Truskawka (10 sec) - Moc Kliknięcia x2</button>
+  <button id="blueberryUpgrade" class="upgrade" onclick="applyTheme('blueberry')" disabled>🫐 Tryb Borówka (40 sec) - Moc Kliknięcia x4</button>
+  <button id="orangeUpgrade" class="upgrade" onclick="applyTheme('orange')" disabled>🍊 Tryb Pomarańcza (2 min) - Moc Kliknięcia x8</button>
+
+</div>
+
+  <!-- Zegar -->
+  <clockArea class="container" onclick="clickClock()">
+    <img src="graphics/clockGraphics/clockTmp.png" class="clockImg" id="clockImg">
+  </clockArea>
 
 </body>
 </html>

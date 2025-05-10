@@ -1,46 +1,80 @@
-// Variable containing upgrades area element
+// Efekt dźwięku kliknięcia
+const soundEffect = document.getElementById('soundEffect');
+
+// Licznik kliknięć
+let clickAmount = 0;
+let currentUpgradeModifier = 1;
+let clickPower = 1;
+let mouseX = 0;
+let mouseY = 0;
+
+// Przycisk ulepszeń
+const themeUpgradeBtn = document.getElementById("themeUpgrade");
+const blueberryUpgradeBtn = document.getElementById("blueberryUpgrade");
+const orangeUpgradeBtn = document.getElementById("orangeUpgrade");
+
+// Główne elementy
+const navigationArea = document.querySelector("navigationArea");
+const counterArea = document.querySelector("counterArea");
 const upgradeArea = document.getElementById("upgradeArea");
-// Function of the upgrade show button
-// used to show upgrade area on screens 
-// with screen width of less than 800px 
-function toggleUpgradeArea(){
-    upgradeArea.classList.toggle('show');
+const clockArea = document.querySelector("clockArea");
+
+document.onmousemove = function(e){
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    console.clear()
+    console.log("mouseX "+ mouseX);
+    console.log("mouseY "+ mouseY);
 }
 
-
-// Main variable containing clicks amount
-var clickAmount = 0;
-
-// Function invoking add click
-function clickClock(){
-    clickAmount++;
+// Obsługa kliknięcia w zegar
+function clickClock() {
+    clickAmount+=clickPower*currentUpgradeModifier;
     updateCounters();
     updateClockGraphic();
 
+    // Dźwięk kliknięcia
     soundEffect.currentTime = 0;
     soundEffect.play();
 }
 
-function updateClockGraphic(){
-    // Uncomment line below to change clock graphic with clicks
-    //document.getElementById("clockImg").src = "PATH TO IMAGE"
+// Funkcja aktualizacji grafiki zegara (opcjonalna)
+function updateClockGraphic() {
+    // Odblokowanie ulepszeń
+    if (clickAmount >= 10) themeUpgradeBtn.disabled = false;
+    if (clickAmount >= 40) blueberryUpgradeBtn.disabled = false;
+    if (clickAmount >= 120) orangeUpgradeBtn.disabled = false;
+
+    // Animacje emoji w zależności od motywu
+    if (document.body.classList.contains('strawberry')) {
+        spawnEmoji("🍓")
+    }
+    if (document.body.classList.contains('blueberry')) {
+        spawnEmoji("🫐")
+    }
+    if (document.body.classList.contains('orange')) {
+        spawnEmoji("🍊")
+    }
 }
 
-// Updating all counters in html
-function updateCounters(){
-    var value = clickAmount;
-    var years = Math.floor(value/31556926);
-    value = (value % 31556926)
-    var months = Math.floor(value/2628288);
-    value = (value % 2628288)
-    var days = Math.floor(value/86400);
-    value = (value % 86400)
-    var hours = Math.floor(value/3600);
-    value = (value % 3600)
-    var minutes = Math.floor(value/60);
-    value = (value % 60)
-    var seconds = value;
-    //console.log(years, months, days, hours, minutes, seconds)
+// Aktualizacja liczników czasu
+function updateCounters() {
+    let value = clickAmount;
+    let years = Math.floor(value / 31556926);
+    value %= 31556926;
+
+    let months = Math.floor(value / 2628288);
+    value %= 2628288;
+
+    let days = Math.floor(value / 86400);
+    value %= 86400;
+
+    let hours = Math.floor(value / 3600);
+    value %= 3600;
+
+    let minutes = Math.floor(value / 60);
+    let seconds = value % 60;
+
     updateYears(years);
     updateMonths(months);
     updateDays(days);
@@ -48,59 +82,104 @@ function updateCounters(){
     updateMinutes(minutes);
     updateSeconds(seconds);
 }
-function updateYears(years){
-    yearsAmount.innerHTML = years+"";
+
+// Pojedyncze jednostki czasu
+function updateYears(years) {
+    yearsAmount.innerHTML = years + "";
 }
-function updateMonths(months){
-    monthsAmount.innerHTML = months+"";
+function updateMonths(months) {
+    monthsAmount.innerHTML = months + "";
 }
-function updateDays(days){
-    daysAmount.innerHTML = days+"";
+function updateDays(days) {
+    daysAmount.innerHTML = days + "";
 }
-function updateHours(hours){
-    hoursAmount.innerHTML = hours+"";
+function updateHours(hours) {
+    hoursAmount.innerHTML = hours + "";
 }
-function updateMinutes(minutes){
-    minutesAmount.innerHTML = minutes+"";
+function updateMinutes(minutes) {
+    minutesAmount.innerHTML = minutes + "";
 }
-function updateSeconds(seconds){
-    secondsAmount.innerHTML = seconds+"";
+function updateSeconds(seconds) {
+    secondsAmount.innerHTML = seconds + "";
 }
 
-// Nakładka ustawienia
-
-const sliderMusic = document.getElementById('musicVolumeSlider');
-const sliderMusicValue = document.getElementById('musicVolumeValue');
-
-const sliderEffects = document.getElementById('effectVolumeSlider');
-const sliderEffectValue = document.getElementById('effectVolumeValue');
-
-const backgroundMusic = document.getElementById('backgroundMusic');
-const soundEffect = document.getElementById('soundEffect');
-
-document.addEventListener('click', function(){
-    backgroundMusic.play();
-    soundEffect.play();
-}, { once: true });
-
+// Panel ustawień
 function openSettings() {
     document.getElementById('settingsPanel').classList.remove('hidden');
-  }
-  
-  function showMusicVolume(value) {
-      sliderMusicValue.innerHTML = value + '%';
-      backgroundMusic.volume = value / 100;
-  }
-  
-  function showEffectVolume(value) {
-      sliderEffectValue.innerHTML = value + '%';
-      soundEffect.volume = value / 100;
-  }
-
-  function closeSettings() {
+}
+function closeSettings() {
     document.getElementById('settingsPanel').classList.add('hidden');
-  }
+}
+function showEffectVolume(value) {
+    document.getElementById('effectVolumeValue').innerHTML = value + '%';
+    soundEffect.volume = value / 100;
+}
 
+function spawnEmoji(emojiIcon){
+    const emoji = document.createElement("div");
+    emoji.textContent = emojiIcon;
+    if (emojiIcon == "🍓") {
+        emoji.classList.add("strawberry-fly");
+    }
+    else if (emojiIcon == "🫐") {
+        emoji.classList.add("blueberry-fly");
+    }
+    else {
+        emoji.classList.add("orange-fly");
+    }
+    let xOffset = setOffset(50,-50);
+    let yOffset = setOffset(10,-25);
+    emoji.style.left = mouseX-20+xOffset + "px";
+    emoji.style.top = mouseY-20+yOffset + "px";
+    emoji.style.fontSize = "2rem";
+    emoji.style.position = "absolute";
+    document.body.appendChild(emoji);
 
-  }
-  
+    setTimeout(() => {
+        emoji.remove();
+    }, 1500);
+}
+
+function setOffset(max, min){
+    let offset = Math.floor(Math.random() * (max - min + 1) ) + min;
+    return offset;
+}
+
+function applyTheme(themeName) {
+    document.body.classList.remove('blueberry', 'orange','strawberry');
+    document.body.classList.add(themeName);
+
+    updateAreaClassNames(themeName);
+    checkSetChosenButtonAndClockTheme(themeName);
+}
+
+function updateAreaClassNames(themeName){
+    navigationArea.className = themeName;
+    counterArea.className = themeName;
+    upgradeArea.className = themeName;
+    clockArea.className = themeName;
+}
+
+function checkSetChosenButtonAndClockTheme(themeName){
+    clickPower = clickPower*currentUpgradeModifier;
+    if (themeName == 'strawberry'){
+        setButtonAndClock([themeUpgradeBtn, "🍓", "Truskawka.png"])
+        currentUpgradeModifier = 2;
+    }
+    else if (themeName == 'blueberry'){
+        setButtonAndClock([blueberryUpgradeBtn, "🫐", "Borówka.png"])
+        currentUpgradeModifier = 4;
+    }
+    else{
+        setButtonAndClock([orangeUpgradeBtn, "🍊", "Pomarańcza.png"])
+        currentUpgradeModifier = 8;
+    }
+}
+
+function setButtonAndClock(parameters){
+    const button = parameters[0];
+    button.disabled = true;
+    button.innerText = parameters[1] + " Tryb aktywowany!"
+    document.getElementById("clockImg").src = "graphics/clockGraphics/"+parameters[2];
+}
+
